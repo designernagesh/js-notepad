@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Notepad</title>  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div style="height: 90vh" class="d-flex mt-4 justify-content-center align-items-center">
+  <div class="container">
+    <h1 class="display-3 text-danger my-4">Notepad</h1>    
+
+      <div class="row">
+        <div class="col-md-2">
+          <select class="form-control" id="fontFamilies" onchange="fontFamily()">
+            <option value="Arial">Arial</option>
+            <option value="Sans Serif">Sans Serif</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Trebuchet MS">Trebuchet MS</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="Impact">Impact</option>
+            <option value="Bookman">Bookman</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Garamond">Garamond</option>
+            <option value="Palatino">Palatino</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Montserrat">Montserrat</option>            
+            </select>            
+        </div>
+
+        <div class="col-md-2">          
+          <select class="form-control" id="fontSizes" onchange="fontSize()">
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="36">36</option>
+            <option value="42">42</option>
+            <option value="48">48</option>
+            <option value="60">60</option>
+            <option value="72">72</option>
+          </select>  
+        </div>
+
+        <div class="col-md-2">
+          <select class="form-control" id="textTransforms" onchange="textTransform()">
+            <option value="none">none</option>
+            <option value="capitalize">capitalize</option>
+            <option value="uppercase">uppercase</option>
+            <option value="lowercase">lowercase</option>            
+          </select>  
+        </div>
+
+        <div class="col-md-2">
+          <input type="button" class="btn btn-block btn-secondary" value="Bold" onclick="bold()" />
+        </div>
+
+        <div class="col-md-2">
+          <input type="button" class="btn btn-block btn-secondary" value="Italic" onclick="italic()" />
+        </div>
+
+        <div class="col-md-2">
+          <input type="button" class="btn btn-block btn-secondary" value="Underline" onclick="underline()" />
+        </div>
+        
+        <div class="col-md-12 my-4">
+          <textarea id="text" class="form-control" rows="15" cols=""></textarea>
+        </div>
+
+        <div class="col-md-12 mb-4 text-center">
+          <input type="reset" class="btn btn-secondary" value="Reset" onclick="reset()" />
+          <input type="button" class="btn btn-danger" value="Clear" onclick="clears()" />
+        </div>
+      </div>
+   </div>   
+  <script>
+    let text = document.getElementById("text");        
+    
+    const fontFamily = () =>{
+      let fontFamilies = document.getElementById("fontFamilies").value;
+      text.style.fontFamily = fontFamilies
+    }
+    const fontSize = () =>{      
+      let fontSizes = document.getElementById("fontSizes").value;
+      text.style.fontSize = fontSizes + 'px';      
+    }
+    const textTransform = () =>{
+      let textTransforms = document.getElementById("textTransforms").value;
+      text.style.textTransform = textTransforms;
+    }
+    const bold = () =>{      
+      text.classList.toggle("fontWeight");
+    }
+    const italic = () =>{
+      text.classList.toggle("italic");
+    }
+    const underline = () =>{
+      text.classList.toggle("underline");
+    }
+    const reset = () => {
+      text.style.fontWeight = "normal";
+      text.style.fontStyle = "normal";
+      text.style.textDecoration = "none";
+    }
+    const clears = () => {      
+      text.value = "";
+    }
+  </script>
+</body>
+</html>
